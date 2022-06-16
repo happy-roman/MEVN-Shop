@@ -8,7 +8,7 @@ const routes = require('./server/routes');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const port = 5000 || process.env.PORT;
+const port = process.env.$PORT || 5599;
 
 mongoose.connect('mongodb://localhost:27017/MEVN-Shop', {
   useNewUrlParser: true,
