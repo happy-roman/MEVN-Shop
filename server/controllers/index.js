@@ -1,5 +1,9 @@
+const category = require('./categoryController');
+const product = require('./productController');
+const cart = require('./cartController');
+
 module.exports = {
-  category: require('./categoryController'),
-  product: require('./productController'),
-  cart: require('./cartController'),
+  category,
+  product,
+  cart,
 };
