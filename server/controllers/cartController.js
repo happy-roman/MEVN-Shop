@@ -1,6 +1,6 @@
-const { crudController } = require('./crudController')
-const { cart } = require('../models')
+const { crudController } = require('./crudController');
+const { cart } = require('../models');
 
 module.exports = {
-  ...crudController(cart)
-}
+  ...crudController(cart),
+};

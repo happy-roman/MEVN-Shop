@@ -1,14 +1,14 @@
-const { model, Schema, Schema: { Types: { Array, ObjectId }}} = require('mongoose');
+const { model, Schema, Schema: { Types: { Array, ObjectId } } } = require('mongoose');
 
 const cart = new Schema({
   user_id: {
     type: ObjectId,
-    ref: "user",
+    ref: 'user',
   },
   content: {
     type: Array,
-    default: []
-  }
+    default: [],
+  },
 });
 
-module.exports = model('cart', cart)
+module.exports = model('cart', cart);

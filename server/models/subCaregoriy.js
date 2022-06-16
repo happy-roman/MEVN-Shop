@@ -1,14 +1,14 @@
 const { model, Schema, Schema: { Types: { ObjectId } } } = require('mongoose');
 
-const sub_category = new Schema({
+const subCategory = new Schema({
   name: {
     type: String,
-    default: ''
+    default: '',
   },
   products: [{
     type: ObjectId,
-    ref: "product"
-  }]
+    ref: 'product',
+  }],
 });
 
-module.exports = model('sub_category', sub_category)
+module.exports = model('sub_category', subCategory);

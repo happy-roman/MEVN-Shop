@@ -4,7 +4,8 @@
   "description": "rebuild study vue project in mevn pattern ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "lint": "eslint server/"
   },
   "author": "happy-roman",
   "license": "ISC",
@@ -14,5 +15,10 @@
     "express": "^4.17.3",
     "express-promise-router": "^4.1.1",
     "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   }
 }

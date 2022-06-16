@@ -3,12 +3,12 @@ const { model, Schema, Schema: { Types: { ObjectId } } } = require('mongoose');
 const category = new Schema({
   name: {
     type: String,
-    default: ''
+    default: '',
   },
   products: [{
     type: ObjectId,
-    ref: "product"
-  }]
+    ref: 'product',
+  }],
 });
 
-module.exports = model('category', category)
+module.exports = model('category', category);

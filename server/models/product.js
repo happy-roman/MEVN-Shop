@@ -1,41 +1,41 @@
-const { model, Schema, Schema: { Types: { ObjectId } } } = require('mongoose')
+const { model, Schema, Schema: { Types: { ObjectId } } } = require('mongoose');
 
 const product = new Schema({
   product_name: {
     type: String,
-    default: ''
+    default: '',
   },
   price: {
     type: String,
-    default: ''
+    default: '',
   },
   description: {
     type: String,
-    default: ''
+    default: '',
   },
   img: {
     type: String,
-    default: ''
+    default: '',
   },
   full_img: {
     type: String,
-    default: ''
+    default: '',
   },
   small_img: {
     type: String,
-    default: ''
+    default: '',
   },
   category: {
     type: ObjectId,
-    ref: "category"
+    ref: 'category',
   },
   sub_category: {
     type: ObjectId,
-    ref: "sub_category"
-  }
+    ref: 'sub_category',
+  },
 });
 
-module.exports = model('product', product)
+module.exports = model('product', product);
 
 // "id_product": 3,
 // "id_category": 1,
