@@ -4,7 +4,8 @@
   "description": "rebuild study vue project in mevn pattern ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "eslint server/"
   },
   "author": "happy-roman",
