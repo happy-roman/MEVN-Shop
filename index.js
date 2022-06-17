@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const port = process.env.$PORT || 5599;
 
-mongoose.connect('mongodb://localhost:27017/MEVN-Shop', {
+mongoose.connect('https://data.mongodb-api.com/app/data-khnfy/endpoint/data/v1' || 'mongodb://localhost:27017/MEVN-Shop', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
