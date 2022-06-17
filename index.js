@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const port = process.env.$PORT || 5599;
 
-mongoose.connect('mongodb://data.mongodb-api.com/app/data-khnfy/endpoint/data/v1' || 'mongodb://localhost:27017/MEVN-Shop', {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+mongoose.connect('mongodb+srv://happy:HomOs219014@mevn-shop.hbud4sd.mongodb.net/MEVN-Shop?retryWrites=true&w=majority' || 'mongodb://localhost:27017/MEVN-Shop', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
   .then(() => console.log('MongoDB conect: OK'))
   .catch((err) => console.log(err));
