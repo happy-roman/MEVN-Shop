@@ -1,0 +1,1 @@
+rebuild study shop on MEVN stack
