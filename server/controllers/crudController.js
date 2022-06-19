@@ -1,5 +1,4 @@
 // const boom = require('boom');
-
 const crudController = (model) => ({
   async getAll(res, _id = '627d353951916a54e3d01611') {
     try {
