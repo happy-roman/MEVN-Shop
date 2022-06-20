@@ -20,7 +20,7 @@ const store = new Vuex.Store({
           if (!result.ok) throw Error(result.statusText);
           return await result.json();
         } catch (error) {
-          throw Error(error || 'Поймали ошибку');
+          throw new Error(error || 'Поймали ошибку');
         }
       },
     };

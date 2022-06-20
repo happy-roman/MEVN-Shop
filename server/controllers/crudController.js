@@ -1,16 +1,14 @@
-// const boom = require('boom');
 const crudController = (model) => ({
   async getAll(res, _id = '627d353951916a54e3d01611') {
     try {
       if (model.modelName === 'cart') {
-        const items = await model.findById('627d353951916a54e3d01611' || _id);
+        const items = await model.findById(_id);
         return res.status(200).send(items);
       }
       const items = await model.find();
       return res.status(200).send(items);
     } catch (err) {
       throw new Error(err);
-      // return res.status(400).send(boom.boomify(err))
     }
   },
   async get({ params: { id } }, res) {
