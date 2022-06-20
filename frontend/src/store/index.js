@@ -14,15 +14,14 @@ const store = new Vuex.Store({
     return {
       userAuth: false,
       isAdmin: false,
-      getFetch(url, init = null) {
-        return fetch(url, init)
-          .then((result) => {
-            if (!result.ok) throw Error(result.statusText);
-            return result.json();
-          })
-          .catch((error) => {
-            throw Error(error || 'Поймали ошибку');
-          });
+      async getFetch(url, init = null) {
+        try {
+          const result = await fetch(url, init);
+          if (!result.ok) throw Error(result.statusText);
+          return await result.json();
+        } catch (error) {
+          throw Error(error || 'Поймали ошибку');
+        }
       },
     };
   },
