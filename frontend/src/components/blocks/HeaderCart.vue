@@ -8,11 +8,8 @@
       <div v-else>
         <div class="cart-block">
           <div class="cart-product">
-            <cartItems class="cart-item"
-                       v-for="item of this.userCart"
-                       :key="item.id_product"
-                       :cart-item="item"
-                       :img="item.img || imgCart">
+            <cartItems class="cart-item" v-for="item of this.userCart" :key="item.id_product"
+              :cart-item="item" :img="item.img || imgCart">
             </cartItems>
             <div>
               <p>total</p>

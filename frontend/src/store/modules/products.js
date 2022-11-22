@@ -18,7 +18,8 @@ const productsStore = {
     },
   },
   actions: {
-    getProducts(context, url = 'https://mevn-shop.vercel.app/api/products') {
+    // 'https://mevn-shop.vercel.app/api/products
+    getProducts(context, url = 'http://localhost:5599/api/products') {
       context.rootState.getFetch(url)
         .then((data) => {
           context.commit('getProducts', data);

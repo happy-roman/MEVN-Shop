@@ -3,14 +3,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
+
 const routes = require('./server/routes');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const port = process.env.$PORT || 5599;
-
-mongoose.connect('mongodb+srv://happy:HomOs219014@mevn-shop.hbud4sd.mongodb.net/MEVN-Shop?retryWrites=true&w=majority', {
+// 'mongodb+srv://happy:HomOs219014@mevn-shop.hbud4sd.mongodb.net/MEVN-Shop?retryWrites=true&w=majority'
+mongoose.connect('mongodb://localhost:27017/MEVN-Shop', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

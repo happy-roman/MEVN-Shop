@@ -1,12 +1,13 @@
 const crudController = (model) => ({
-  async getAll(res, _id = '627d353951916a54e3d01611') {
+  async getAll(req, res) {
     try {
-      if (model.modelName === 'cart') {
-        const items = await model.findById(_id);
-        return res.status(200).send(items);
-      }
       const items = await model.find();
-      return res.status(200).send(items);
+      if (model.modelName === 'cart') {
+        res.status(200).send(items[0]);
+      } else {
+        res.status(200).send(items);
+      }
+      return;
     } catch (err) {
       throw new Error(err);
     }
@@ -23,6 +24,7 @@ const crudController = (model) => ({
     try {
       // eslint-disable-next-line new-cap
       const item = new model(body);
+      console.log(item);
       const newItem = await item.save();
       return res.status(200).send(newItem);
     } catch (err) {

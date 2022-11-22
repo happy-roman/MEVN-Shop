@@ -22,23 +22,25 @@ const cartStore = {
     },
   },
   actions: {
-    getCart(context, url = 'https://mevn-shop.vercel.app/api/cart') {
+    // https://mevn-shop.vercel.app/api/cart
+    getCart(context, url = 'http://localhost:5599/api/cart') {
       context.rootState.getFetch(url)
         .then((data) => {
           context.commit('getCart', data.content);
         });
     },
     addToCart(context, product) {
-      const find = context.state.userCart.find((el) => el.id_product === product.id_product);
+      const finded = context.state.userCart.find((el) => el.id_product === product.id_product);
       let methodForCall = '';
       let body = {};
-      let action = () => {};
-      let url = 'https://mevn-shop.vercel.app/api/cart';
-      if (find) {
+      let action = () => { };
+      // https://mevn-shop.vercel.app/api/cart
+      let url = 'http://localhost:5599/api/cart';
+      if (finded) {
         methodForCall = 'PUT';
         body = { quantity: product.quantity || 1 };
-        action = () => { find.quantity += product.quantity || 1; };
-        url += `/${find.id_product}`;
+        action = () => { finded.quantity += product.quantity || 1; };
+        url += `/${finded.id_product}`;
       } else {
         methodForCall = 'POST';
         body = { quantity: 1, ...product };
@@ -58,7 +60,8 @@ const cartStore = {
         });
       context.commit('addToCart');
     },
-    removeFromCart(context, product, url = 'https://mevn-shop.vercel.app/api/cart') {
+    // https://mevn-shop.vercel.app/api/cart
+    removeFromCart(context, product, url = 'http://localhost:5599/api/cart') {
       const find = context.state.userCart.find((el) => el.id_product === product.id_product);
       if (find.quantity > 1) {
         context.rootState.getFetch(`${url}/${find.id_product}`, {

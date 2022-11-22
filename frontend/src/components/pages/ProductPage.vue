@@ -89,7 +89,7 @@ export default {
     if (find) {
       this.product = find;
     } else {
-      fetch(`http://localhost:5000/api/products/${this.$route.params.id}`)
+      fetch(`http://localhost:5599/api/products/${this.$route.params.id}`)
         .then((res) => res.json())
         .then((data) => {
           this.product = data;
