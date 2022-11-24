@@ -24,7 +24,7 @@ export default {
     FooterBlock,
   },
   methods: {
-    ...mapActions('getUser', ['getUser']),
+    ...mapActions('user', ['getUser']),
   },
   mounted() {
     this.getUser();

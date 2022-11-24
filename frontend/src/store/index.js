@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import userCart from './modules/user-cart';
 import productsStore from './modules/products';
-import user from './modules/users';
+import users from './modules/users';
 
 Vue.use(Vuex);
 
@@ -10,7 +10,7 @@ const store = new Vuex.Store({
   modules: {
     products: productsStore,
     cart: userCart,
-    user,
+    user: users,
   },
   state() {
     return {

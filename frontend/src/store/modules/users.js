@@ -1,4 +1,4 @@
-const users = {
+const usersStor = {
   namespaced: true,
   state() {
     return {
@@ -7,7 +7,6 @@ const users = {
   },
   mutations: {
     getUser(state, data) {
-      console.log(data[0]);
       state.user = data;
     },
   },
@@ -26,4 +25,4 @@ const users = {
   },
 };
 
-export default users;
+export default usersStor;
