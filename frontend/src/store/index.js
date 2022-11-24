@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import userCart from './modules/user-cart';
 import productsStore from './modules/products';
+import user from './modules/users';
 
 Vue.use(Vuex);
 
@@ -9,14 +10,15 @@ const store = new Vuex.Store({
   modules: {
     products: productsStore,
     cart: userCart,
+    user,
   },
   state() {
     return {
       userAuth: false,
       isAdmin: false,
-      async getFetch(url, init = null) {
+      async getFetch(url, data = null) {
         try {
-          const result = await fetch(url, init);
+          const result = await fetch(url, data);
           if (!result.ok) throw Error(result.statusText);
           return await result.json();
         } catch (error) {
@@ -44,5 +46,6 @@ const store = new Vuex.Store({
 
 store.dispatch('products/getProducts');
 store.dispatch('cart/getCart');
+store.dispatch('user/getUser');
 
 export default store;

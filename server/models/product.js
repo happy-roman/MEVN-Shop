@@ -29,10 +29,10 @@ const product = new Schema({
     type: ObjectId,
     ref: 'category',
   },
-  sub_category: {
-    type: ObjectId,
-    ref: 'sub_category',
-  },
+  // sub_category: {
+  //   type: ObjectId,
+  //   ref: 'sub_category',
+  // },
 });
 
 module.exports = model('product', product);

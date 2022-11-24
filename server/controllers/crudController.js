@@ -2,12 +2,7 @@ const crudController = (model) => ({
   async getAll(req, res) {
     try {
       const items = await model.find();
-      if (model.modelName === 'cart') {
-        res.status(200).send(items[0]);
-      } else {
-        res.status(200).send(items);
-      }
-      return;
+      return res.status(200).send(items);
     } catch (err) {
       throw new Error(err);
     }
@@ -24,7 +19,6 @@ const crudController = (model) => ({
     try {
       // eslint-disable-next-line new-cap
       const item = new model(body);
-      console.log(item);
       const newItem = await item.save();
       return res.status(200).send(newItem);
     } catch (err) {
@@ -42,7 +36,7 @@ const crudController = (model) => ({
   async delete({ params: { id } }, res) {
     try {
       await model.findByIdAndDelete(id);
-      return res.status(200).send({ status: 'OK', message: 'Удаление упешно' });
+      return res.status(200).send({ status: 'OK', message: 'Удаление уcпешно' });
     } catch (err) {
       throw new Error(err);
     }

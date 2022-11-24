@@ -14,12 +14,20 @@ import Navigation from '@/components/blocks/Navigation.vue';
 import Subscribe from '@/components/blocks/Subscribe.vue';
 import FooterBlock from '@/components/blocks/Footer-block.vue';
 
+import { mapActions } from 'vuex';
+
 export default {
   components: {
     HeaderBlock,
     Navigation,
     Subscribe,
     FooterBlock,
+  },
+  methods: {
+    ...mapActions('getUser', ['getUser']),
+  },
+  mounted() {
+    this.getUser();
   },
 };
 </script>

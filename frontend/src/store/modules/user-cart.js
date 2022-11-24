@@ -29,7 +29,7 @@ const cartStore = {
           context.commit('getCart', data.content);
         });
     },
-    addToCart(context, product) {
+    addToCart(context, product, userId = '637da7066cdf70aa8d620970') {
       const finded = context.state.userCart.find((el) => el.id_product === product.id_product);
       let methodForCall = '';
       let body = {};
@@ -38,12 +38,13 @@ const cartStore = {
       let url = 'http://localhost:5599/api/cart';
       if (finded) {
         methodForCall = 'PUT';
-        body = { quantity: product.quantity || 1 };
+        body = { userId, quantity: product.quantity || 1 };
         action = () => { finded.quantity += product.quantity || 1; };
         url += `/${finded.id_product}`;
       } else {
         methodForCall = 'POST';
-        body = { quantity: 1, ...product };
+        body = { userId, quantity: 1, ...product };
+        console.log(body);
         action = () => { context.state.userCart.push(body); };
       }
       context.rootState.getFetch(url, {
