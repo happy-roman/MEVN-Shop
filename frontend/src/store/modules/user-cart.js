@@ -1,8 +1,9 @@
-const cartStore = {
+export default {
   namespaced: true,
   state() {
     return {
       userCart: [],
+      userCartId: '',
     };
   },
   getters: {
@@ -11,7 +12,7 @@ const cartStore = {
     },
   },
   mutations: {
-    getCart(state, data) {
+    setCart(state, data) {
       state.userCart = data;
     },
     addToCart(state) {
@@ -23,10 +24,11 @@ const cartStore = {
   },
   actions: {
     // https://mevn-shop.vercel.app/api/cart
-    getCart(context, url = 'http://localhost:5599/api/cart') {
-      context.rootState.getFetch(url)
+    async getCart(context, userId) {
+      const url = `cart/${userId}`;
+      await context.rootState.getFetch(url)
         .then((data) => {
-          context.commit('getCart', data.content);
+          context.commit('setCart', data.cartItems);
         });
     },
     addToCart(context, product, userId = '637da7066cdf70aa8d620970') {
@@ -35,7 +37,7 @@ const cartStore = {
       let body = {};
       let action = () => { };
       // https://mevn-shop.vercel.app/api/cart
-      let url = 'http://localhost:5599/api/cart';
+      let url = 'cart';
       if (finded) {
         methodForCall = 'PUT';
         body = { userId, quantity: product.quantity || 1 };
@@ -44,7 +46,6 @@ const cartStore = {
       } else {
         methodForCall = 'POST';
         body = { userId, quantity: 1, ...product };
-        console.log(body);
         action = () => { context.state.userCart.push(body); };
       }
       context.rootState.getFetch(url, {
@@ -62,7 +63,7 @@ const cartStore = {
       context.commit('addToCart');
     },
     // https://mevn-shop.vercel.app/api/cart
-    removeFromCart(context, product, url = 'http://localhost:5599/api/cart') {
+    removeFromCart(context, product, url = 'cart') {
       const find = context.state.userCart.find((el) => el.id_product === product.id_product);
       if (find.quantity > 1) {
         context.rootState.getFetch(`${url}/${find.id_product}`, {
@@ -94,4 +95,3 @@ const cartStore = {
     },
   },
 };
-export default cartStore;

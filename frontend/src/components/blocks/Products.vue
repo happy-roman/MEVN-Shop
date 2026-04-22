@@ -10,7 +10,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import product from '@/components/blocks/Product.vue';
 
 export default {
@@ -23,8 +23,14 @@ export default {
       imgCatalog: 'https://placehold.it/260x280',
     };
   },
+  mounted() {
+    this.getProducts();
+  },
   computed: {
     ...mapGetters('products', ['products']),
+  },
+  methods: {
+    ...mapActions('products', ['getProducts']),
   },
 };
 </script>

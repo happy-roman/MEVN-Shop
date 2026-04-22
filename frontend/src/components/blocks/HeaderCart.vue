@@ -29,7 +29,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import cartItems from '@/components/blocks/cartItem.vue';
 
 export default {
@@ -41,7 +41,16 @@ export default {
     return {
       imgCart: 'https://placehold.it/72x85',
       showCart: false,
+      user: this.$store.state.user,
     };
+  },
+  mounted() {
+    /**
+     * TODO получить id корзины пользователя пользователя для получения корзины
+     */
+    // const userCartId = this.user.cart;
+    // this.getCart('637da7066cdf70aa8d620970');
+    this.getCart('637e014345c82bcb3227a6b8');
   },
   computed: {
     ...mapGetters('cart', ['userCart']),
@@ -52,6 +61,10 @@ export default {
       });
       return total.toFixed(2);
     },
+  },
+  methods: {
+    ...mapActions('cart', ['getCart']),
+
   },
 };
 </script>

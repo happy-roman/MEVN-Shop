@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// TO DO переписать методы под VUEX с mongoDB
 export default {
   name: 'cartItems',
   props: ['cartItem', 'img'],

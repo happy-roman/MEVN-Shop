@@ -1,4 +1,4 @@
-const productsStore = {
+export default {
   namespaced: true,
   state() {
     return {
@@ -11,20 +11,17 @@ const productsStore = {
     },
   },
   mutations: {
-    getProducts(state, data) {
-      data.forEach((el) => {
-        state.products.push(el);
-      });
+    setProducts(state, data) {
+      state.products = data;
     },
   },
   actions: {
     // 'https://mevn-shop.vercel.app/api/products
-    getProducts(context, url = 'http://localhost:5599/api/products') {
-      context.rootState.getFetch(url)
+    async getProducts(context, url = 'products') {
+      await context.rootState.getFetch(url)
         .then((data) => {
-          context.commit('getProducts', data);
+          context.commit('setProducts', data);
         });
     },
   },
 };
-export default productsStore;

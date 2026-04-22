@@ -14,7 +14,7 @@ import Navigation from '@/components/blocks/Navigation.vue';
 import Subscribe from '@/components/blocks/Subscribe.vue';
 import FooterBlock from '@/components/blocks/Footer-block.vue';
 
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -24,10 +24,13 @@ export default {
     FooterBlock,
   },
   methods: {
-    ...mapActions('user', ['getUser']),
+    ...mapActions('user', ['fetchUser']),
   },
-  mounted() {
-    this.getUser();
+  beforeMount() {
+    this.fetchUser();
+  },
+  computed: {
+    ...mapGetters('user', ['getUser']),
   },
 };
 </script>

@@ -18,7 +18,8 @@ const routes = [
     component: UserCart,
   },
   {
-    path: '/goods/:id',
+    // TODO add id's
+    path: '/goods',
     name: 'goods',
     component: ProductPage,
     props: true,

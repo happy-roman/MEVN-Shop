@@ -5,7 +5,7 @@ const cart = new Schema({
     type: ObjectId,
     ref: 'user',
   },
-  content: [
+  cartItems: [
     {
       id_product: {
         type: String,
