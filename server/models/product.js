@@ -29,25 +29,10 @@ const product = new Schema({
     type: ObjectId,
     ref: 'category',
   },
-  sub_category: {
-    type: ObjectId,
-    ref: 'sub_category',
-  },
+  // sub_category: {
+  //   type: ObjectId,
+  //   ref: 'sub_category',
+  // },
 });
 
 module.exports = model('product', product);
-
-// "id_product": 3,
-// "id_category": 1,
-// "id_sub_category": 2,
-// "id_sizes": 1,
-// "id_colors": 2,
-// "id_material": 1,
-// "id_designer": 2,
-// "featured": true,
-// "hot_deals": true,
-// "product_name": "Mango  People  T-shirt",
-// "price": "52.00",
-// "img": "/img/product_img_.jpg",
-// "full_img": "",
-// "small_img": ""
